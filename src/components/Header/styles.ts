@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
 `;
 
 export const HeaderContent = styled.nav`
-  width: 1440px;
+  width: 1180px;
   display: flex;
   align-items: center;
   justify-content: space-between;
