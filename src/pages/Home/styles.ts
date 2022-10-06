@@ -1,13 +1,23 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+interface BoxCircleProps {
+  backgroundColor: string;
+}
 
 export const ContentPage = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
+  `;
+
+export const PresentationWrapper = styled.div`
+  width: 100%;
+  display: flex;
   background-image: url('src/assets/blur-background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 32px;
 `;
 
 export const PresentationContainer = styled.div`
@@ -62,14 +72,14 @@ export const PresentationDetailItemContainer = styled.div`
   gap: 12px;
 `;
 
-export const PresentationDetailBoxCircle = styled.div`
+export const PresentationDetailBoxCircle = styled.div<BoxCircleProps>`
   width: 32px;
   height: 32px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${ props => props.theme["yellow-dark"] };
+  background-color: ${ props => props.backgroundColor };
 `;
 
 export const PresentationDetailBoxText = styled.p`
@@ -83,4 +93,25 @@ export const CoffeeCupImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const OurCoffeesContainer = styled.div`
+  width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 54px;
+    line-height: 1.3;
+  }
+`;
+
+export const OurCoffeesGrid = styled.div`
+  max-width: 1180px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 40px;
+  column-gap: 32px;
 `;

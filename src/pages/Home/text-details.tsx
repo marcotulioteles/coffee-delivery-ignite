@@ -14,12 +14,12 @@ export const textDetails = [
   },
   {
     text: 'Entrega rápida e rastreada',
-    icon: <Coffee size={16} color='#FFFFFF' weight="fill" />,
+    icon: <Timer size={16} color='#FFFFFF' weight="fill" />,
     color: defaultTheme['yellow']
   },
   {
-    text: 'O café chaga fresquinho até você',
-    icon: <Timer size={16} color='#FFFFFF' weight="fill" />,
+    text: 'O café chega fresquinho até você',
+    icon: <Coffee size={16} color='#FFFFFF' weight="fill" />,
     color: defaultTheme['purple']
   },
 ]
