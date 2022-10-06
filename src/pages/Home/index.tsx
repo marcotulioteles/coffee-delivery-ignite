@@ -1,5 +1,6 @@
 import { ShoppingCart } from "phosphor-react";
 import { CoffeeCupImageContainer, ContentPage, PresentationContainer, PresentationDetailBoxCircle, PresentationDetailBoxText, PresentationDetailItemContainer, PresentationSubtitle, PresentationText, PresentationTextDetailsContainer, PresentationTextTitle, PresentationTitleWrapper } from "./styles";
+import { textDetails } from "./text-details";
 
 export function Home() {
   return (
@@ -16,41 +17,16 @@ export function Home() {
           </PresentationTitleWrapper>
           <PresentationTextDetailsContainer>
 
-            <PresentationDetailItemContainer>
+            { textDetails.map(detail => (
+              <PresentationDetailItemContainer>
               <PresentationDetailBoxCircle>
-                <ShoppingCart size={16} color='#FFFFFF' weight="fill"/>
+                { detail.icon }
               </PresentationDetailBoxCircle>
                 <PresentationDetailBoxText>
-                  Compra simples e segura
+                  { detail.text }
                 </PresentationDetailBoxText>
             </PresentationDetailItemContainer>
-
-            <PresentationDetailItemContainer>
-              <PresentationDetailBoxCircle>
-                <ShoppingCart size={16} color='#FFFFFF' weight="fill"/>
-              </PresentationDetailBoxCircle>
-                <PresentationDetailBoxText>
-                Embalagem mantém o café intacto
-                </PresentationDetailBoxText>
-            </PresentationDetailItemContainer>
-            
-            <PresentationDetailItemContainer>
-              <PresentationDetailBoxCircle>
-                <ShoppingCart size={16} color='#FFFFFF' weight="fill"/>
-              </PresentationDetailBoxCircle>
-                <PresentationDetailBoxText>
-                  Compra simples e segura
-                </PresentationDetailBoxText>
-            </PresentationDetailItemContainer>
-
-            <PresentationDetailItemContainer>
-              <PresentationDetailBoxCircle>
-                <ShoppingCart size={16} color='#FFFFFF' weight="fill"/>
-              </PresentationDetailBoxCircle>
-                <PresentationDetailBoxText>
-                  Compra simples e segura
-                </PresentationDetailBoxText>
-            </PresentationDetailItemContainer>
+            )) }
 
           </PresentationTextDetailsContainer>
         </PresentationText>
