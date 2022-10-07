@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 interface BoxCircleProps {
   backgroundColor: string;
@@ -97,7 +97,7 @@ export const CoffeeCupImageContainer = styled.div`
 
 export const OurCoffeesContainer = styled.div`
   width: 1180px;
-  margin: 0 auto;
+  margin: 0 auto 160px;
   display: flex;
   flex-direction: column;
 
