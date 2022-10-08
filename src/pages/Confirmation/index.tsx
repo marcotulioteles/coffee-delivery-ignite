@@ -1,3 +1,11 @@
+import { ConfirmationContainer, ConfirmationContent, PurchaseDetailsContainer } from "./styles";
+
 export function Confirmation() {
-  return <h1>Confirmation</h1>
+  return (
+    <ConfirmationContainer>
+      <ConfirmationContent>
+        <PurchaseDetailsContainer></PurchaseDetailsContainer>
+      </ConfirmationContent>
+    </ConfirmationContainer>
+  )
 }
