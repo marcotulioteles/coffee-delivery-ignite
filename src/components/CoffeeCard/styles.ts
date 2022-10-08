@@ -8,6 +8,11 @@ export const CoffeeCardContainer = styled.div`
   background-color: ${ props => props.theme["base-card"] };
   padding: 0 24px 20px;
   border-radius: 6px 36px 6px 36px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-12px) scale(1.025);
+  }
 `;
 
 export const CoffeeImage = styled.img`
@@ -115,6 +120,11 @@ export const AddAndRemoveButton = styled.button`
   justify-content: center;
   background-color: transparent;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.1);
+  }
 `;
 
 export const AmountValue = styled.span`
@@ -137,4 +147,9 @@ export const AddToCartButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${ props => props.theme.purple };
+  }
 `;

@@ -29,7 +29,7 @@ interface CoffeeCardProps {
 export function CoffeeCard({ imageUrl, badges, title, description, price }: CoffeeCardProps) {
   return (
     <CoffeeCardContainer>
-      <CoffeeImage src={imageUrl}></CoffeeImage>
+      <CoffeeImage src={ imageUrl }></CoffeeImage>
       <BadgeGroup>
         { badges.map(badge => (
           <Badge><span>{ badge }</span></Badge>

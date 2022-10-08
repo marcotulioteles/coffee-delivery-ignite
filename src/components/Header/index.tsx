@@ -1,4 +1,6 @@
+
 import coffeeDeliveryLogo from '../../assets/coffee-delivery-logo.svg';
+import { Link } from 'react-router-dom';
 import { 
   Counter,
   Cart,
@@ -14,16 +16,20 @@ export function Header() {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <img src={ coffeeDeliveryLogo } alt='Coffee Delivery Logo '/>
+        <Link to={'/'}>
+          <img src={ coffeeDeliveryLogo } alt='Coffee Delivery Logo '/>
+        </Link>
         <RightNavButtons>
           <City>
             <MapPin color={ defaultTheme['purple'] } weight='fill' size={ 22 }/>
             Porto Alegre, RS
           </City>
-          <Cart>
-            <ShoppingCart color={ defaultTheme['yellow-dark'] } weight='fill' size={ 22 }/>
-            <Counter />
-          </Cart>
+          <Link to={'/checkout'}>
+            <Cart>
+              <ShoppingCart color={ defaultTheme['yellow-dark'] } weight='fill' size={ 22 }/>
+              <Counter />
+            </Cart>
+          </Link>
         </RightNavButtons>
       </HeaderContent>
     </HeaderContainer>
