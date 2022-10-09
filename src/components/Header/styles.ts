@@ -33,7 +33,7 @@ export const City = styled.div`
   background-color: ${ props => props.theme["purple-light"] };
 `;
 
-export const Cart = styled.a`
+export const Cart = styled.div`
   width: 38px;
   height: 38px;
   border-radius: 6px;
