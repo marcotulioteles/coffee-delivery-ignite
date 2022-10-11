@@ -2,17 +2,24 @@ import { Minus, Plus, Trash } from "phosphor-react";
 import { defaultTheme } from "../../styles/themes/default";
 import { AddRemoveButton, AmountGroup, Button, ButtonGroup, CoffeeDetailsActionsGroup, CoffeeImage, Price, SelectedCoffeeContainer, SelectedCoffeeDetailsContainer } from "./styles";
 
-export function CoffeeCardItem() {
+interface CoffeeCartItemProps {
+  imageUrl: string;
+  name: string;
+  price: number;
+  quantity?: number;
+}
+
+export function CoffeeCartItem({ imageUrl, name, price, quantity }: CoffeeCartItemProps) {
   return (
     <SelectedCoffeeContainer>
       <SelectedCoffeeDetailsContainer>
-        <CoffeeImage src="src/assets/expresso-tradicional.png"/>
+        <CoffeeImage src={imageUrl}/>
         <CoffeeDetailsActionsGroup>
-          <span>Expresso Tradicional</span>
+          <span>{ name }</span>
           <ButtonGroup>
             <AmountGroup>
               <AddRemoveButton><Minus color={ defaultTheme.purple }/></AddRemoveButton>
-              <span>1</span>
+              <span>{ quantity }</span>
               <AddRemoveButton><Plus color={ defaultTheme.purple }/></AddRemoveButton>
             </AmountGroup>
             <Button>
@@ -22,7 +29,7 @@ export function CoffeeCardItem() {
           </ButtonGroup>
         </CoffeeDetailsActionsGroup>
       </SelectedCoffeeDetailsContainer>
-      <Price>R$ 9,90</Price>
+      <Price>R$ { price }</Price>
     </SelectedCoffeeContainer>
   )
 }

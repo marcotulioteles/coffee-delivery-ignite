@@ -11,8 +11,16 @@ import {
 } from './styles';
 import { ShoppingCart, MapPin } from 'phosphor-react';
 import { defaultTheme } from '../../styles/themes/default';
+import { useContext, useEffect } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
 export function Header() {
+  const { cart } = useContext(CartContext);
+
+  useEffect(() => {
+    console.log(cart)
+  }, [cart])
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -27,7 +35,7 @@ export function Header() {
           <Link to={'/checkout'}>
             <Cart>
               <ShoppingCart color={ defaultTheme['yellow-dark'] } weight='fill' size={ 22 }/>
-              <Counter />
+              { cart?.length > 0 && <Counter>{ cart?.length }</Counter> }
             </Cart>
           </Link>
         </RightNavButtons>

@@ -21,10 +21,11 @@ import {
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react';
 import { defaultTheme } from "../../styles/themes/default";
-import { CoffeeCardItem } from "../../components/CoffeeCartItem";
-import { ChangeEvent, useState } from "react";
+import { CoffeeCartItem } from "../../components/CoffeeCartItem";
+import { ChangeEvent, useContext, useState } from "react";
 import { CEPMask, removeNonDigitsChar } from "../../utils/cep-mask";
 import { viaCepAPI } from "../../lib";
+import { CartContext } from "../../contexts/CartContext";
 
 interface AddressFormInputs {
   cep: string;
@@ -39,6 +40,7 @@ interface AddressFormInputs {
 export function Checkout() {
   const [apiAddress, setApiAddress] = useState();
   const { register, handleSubmit, formState: { errors, isValid }, setValue } = useForm<AddressFormInputs>();
+  const { cart } = useContext(CartContext);
 
   const onSubmitAddress: SubmitHandler<AddressFormInputs> = data => console.log(data);
 
@@ -127,8 +129,15 @@ export function Checkout() {
         <h1>Cafés selecionados</h1>
         <SelectedCoffeeContainer>
           <CoffeeCartItemsContainer>
-            <CoffeeCardItem />
-            <CoffeeCardItem />
+            { cart?.map((coffee) => (
+              <CoffeeCartItem 
+                key={`${ coffee.id }`}
+                name={ coffee.title }
+                price={ coffee.price }
+                quantity={ coffee.quantity }
+                imageUrl={ coffee.imageUrl }
+              />
+            )) }
           </CoffeeCartItemsContainer>
           <TotalContainer>
             <TotalTextGroup>

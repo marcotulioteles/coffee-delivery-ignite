@@ -65,6 +65,7 @@ export function Home() {
               description={ coffee.description }
               price={ coffee.price }
               title={ coffee.title }
+              newCoffee={ coffee }
             />
           )) }
         </OurCoffeesGrid>

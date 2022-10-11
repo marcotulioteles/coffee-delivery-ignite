@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import { Header } from "./components/Header";
+import { CartContextProvider } from "./contexts/CartContext";
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from "./Router";
 
@@ -10,7 +10,9 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <Router />
+        <CartContextProvider>
+          <Router />
+        </CartContextProvider>
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>
