@@ -8,3 +8,13 @@ export function CEPMask(value: string) {
 export function removeNonDigitsChar(value: string) {
   return value.replace(/[\W_]/g, "");
 }
+
+export const addZeroAtTheEnd = (value: number): string => {
+  const numberStr = value.toFixed(2).toString();
+  const stringSplitted = numberStr.split('.');
+  
+  if (stringSplitted[stringSplitted.length - 1].length === 1) {
+    return stringSplitted[0] + ',' + stringSplitted[1].padEnd(2, '0')
+  }
+  return numberStr.replace('.', ',');
+}

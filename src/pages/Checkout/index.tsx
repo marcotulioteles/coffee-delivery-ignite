@@ -23,7 +23,7 @@ import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-re
 import { defaultTheme } from "../../styles/themes/default";
 import { CoffeeCartItem } from "../../components/CoffeeCartItem";
 import { ChangeEvent, useContext, useState } from "react";
-import { CEPMask, removeNonDigitsChar } from "../../utils/cep-mask";
+import { addZeroAtTheEnd, CEPMask, removeNonDigitsChar } from "../../utils";
 import { viaCepAPI } from "../../lib";
 import { CartContext } from "../../contexts/CartContext";
 
@@ -40,7 +40,7 @@ interface AddressFormInputs {
 export function Checkout() {
   const [apiAddress, setApiAddress] = useState();
   const { register, handleSubmit, formState: { errors, isValid }, setValue } = useForm<AddressFormInputs>();
-  const { cart } = useContext(CartContext);
+  const { cart, totalItems } = useContext(CartContext);
 
   const onSubmitAddress: SubmitHandler<AddressFormInputs> = data => console.log(data);
 
@@ -132,22 +132,19 @@ export function Checkout() {
             { cart?.map((coffee) => (
               <CoffeeCartItem 
                 key={`${ coffee.id }`}
-                name={ coffee.title }
-                price={ coffee.price }
-                quantity={ coffee.quantity }
-                imageUrl={ coffee.imageUrl }
+                coffee={ coffee }
               />
             )) }
           </CoffeeCartItemsContainer>
           <TotalContainer>
             <TotalTextGroup>
-              <SubtotalText>Total de itens</SubtotalText><SubtotalText>R$ 29,70</SubtotalText>
+              <SubtotalText>Total de itens</SubtotalText><SubtotalText>R$ { addZeroAtTheEnd(totalItems) }</SubtotalText>
             </TotalTextGroup>
             <TotalTextGroup>
               <SubtotalText>Entrega</SubtotalText><SubtotalText>R$ 3,50</SubtotalText>
             </TotalTextGroup>
             <TotalTextGroup>
-              <TotalText>Total</TotalText><TotalText>R$ 33,20</TotalText>
+              <TotalText>Total</TotalText><TotalText>R$ { addZeroAtTheEnd(totalItems + 3.5) }</TotalText>
             </TotalTextGroup>
           </TotalContainer>
           <ConfirmButton type="submit" form="address-form">CONFIRMAR PEDIDO</ConfirmButton>

@@ -8,11 +8,18 @@ export interface Coffee {
   description: string,
   price: number,
   badges: string[],
-  quantity?: number
+  quantity: number
 }
 
 interface CartState {
-  cart: Coffee[]
+  cart: Coffee[],
+  totalItems: number
+}
+
+const calculateTotalItems = (cart: Coffee[]): number => {
+  return cart.reduce((total, currentValue) => {
+    return total + (currentValue.quantity * currentValue.price)
+  }, 0);
 }
 
 export function CartReducer(state: CartState, action: any) {
@@ -28,6 +35,8 @@ export function CartReducer(state: CartState, action: any) {
         } else {
           draft.cart.push(action.payload.newCoffee)
         }
+
+        draft.totalItems = calculateTotalItems(draft.cart);
       })
     default: 
       return state

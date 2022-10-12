@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { Coffee } from "../../reducers/reducer";
 import { defaultTheme } from "../../styles/themes/default";
+import { addZeroAtTheEnd } from "../../utils";
 import { 
   AddAndRemoveButton,
   AddToCartButton,
@@ -32,7 +33,7 @@ interface CoffeeCardProps {
 
 export function CoffeeCard({ newCoffee ,imageUrl, badges, title, description, price }: CoffeeCardProps) {
   const [quantity, setQuantity] = useState(1);
-  const { addNewCoffeeToCart } = useContext(CartContext);
+  const { addNewCoffeeToCart, updateQuantity } = useContext(CartContext);
 
   const addQuantity = () => {
     setQuantity(state => state + 1);
@@ -43,14 +44,10 @@ export function CoffeeCard({ newCoffee ,imageUrl, badges, title, description, pr
     setQuantity(state => state - 1);
   }
 
-  const addZeroAtTheEnd = (value: number): string => {
-    const numberStr = value.toString();
-    const stringSplitted = numberStr.split('.');
-    
-    if (stringSplitted[stringSplitted.length - 1].length === 1) {
-      return stringSplitted[0] + ',' + stringSplitted[1].padEnd(2, '0')
-    }
-    return numberStr.replace('.', ',');
+  const handleAddCoffeeToCart = () => {
+    console.log('called handle add coffee function!')
+    addNewCoffeeToCart({ ...newCoffee, quantity });
+    updateQuantity();
   }
 
   return (
@@ -74,7 +71,7 @@ export function CoffeeCard({ newCoffee ,imageUrl, badges, title, description, pr
             <AmountValue>{ quantity }</AmountValue>
             <AddAndRemoveButton onClick={ addQuantity }><Plus color={ defaultTheme["purple"] } weight="bold"/></AddAndRemoveButton>
           </AmountGroup>
-          <AddToCartButton onClick={ () => addNewCoffeeToCart({ ...newCoffee, quantity }) }><ShoppingCart weight="fill" color="#FFFFFF" size={ 22 }/></AddToCartButton>
+          <AddToCartButton onClick={ handleAddCoffeeToCart }><ShoppingCart weight="fill" color="#FFFFFF" size={ 22 }/></AddToCartButton>
         </AmountAndCartGroup>
       </PurchaseGroup>
     </CoffeeCardContainer>
