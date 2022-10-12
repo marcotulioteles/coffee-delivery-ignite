@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
+  width: 100%;
   height: 104px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  background-color: ${ props => props.theme["base-background"] }
 `;
 
 export const HeaderContent = styled.nav`

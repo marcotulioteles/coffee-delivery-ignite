@@ -9,7 +9,7 @@ export const ConfirmationContainer = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   width: 1180px;
-  margin: 80px auto 0;
+  margin: 184px auto 0;
 `;
 
 export const ConfirmationContent = styled.div`

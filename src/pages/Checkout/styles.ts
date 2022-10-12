@@ -9,7 +9,7 @@ export const CheckoutContainer = styled.main`
   display: flex;
   align-items: flex-start;
   gap: 32px;
-  margin: 40px auto 0;
+  margin: 144px auto 54px;
 `;
 
 export const AddressFormContainer = styled.div`

@@ -8,6 +8,7 @@ export const ContentPage = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-top: 104px;
   `;
 
 export const PresentationWrapper = styled.div`

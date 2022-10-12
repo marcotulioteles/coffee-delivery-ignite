@@ -1,4 +1,5 @@
 import { Minus, Plus, Trash } from "phosphor-react";
+import { useEffect, useState } from "react";
 import { defaultTheme } from "../../styles/themes/default";
 import { AddRemoveButton, AmountGroup, Button, ButtonGroup, CoffeeDetailsActionsGroup, CoffeeImage, Price, SelectedCoffeeContainer, SelectedCoffeeDetailsContainer } from "./styles";
 
@@ -10,6 +11,16 @@ interface CoffeeCartItemProps {
 }
 
 export function CoffeeCartItem({ imageUrl, name, price, quantity }: CoffeeCartItemProps) {
+  const [localQuantity, setLocalQuantity] = useState<number>(quantity ?? 0);
+
+  const addCoffeeQuantity = (quantity: number) => {
+    setLocalQuantity(state => state + quantity + 1);
+  }
+  
+  const removeCoffeeQuantity = (quantity: number) => {
+    setLocalQuantity(state => quantity - state - 1);
+  }
+
   return (
     <SelectedCoffeeContainer>
       <SelectedCoffeeDetailsContainer>
@@ -19,7 +30,7 @@ export function CoffeeCartItem({ imageUrl, name, price, quantity }: CoffeeCartIt
           <ButtonGroup>
             <AmountGroup>
               <AddRemoveButton><Minus color={ defaultTheme.purple }/></AddRemoveButton>
-              <span>{ quantity }</span>
+              <span>{ localQuantity }</span>
               <AddRemoveButton><Plus color={ defaultTheme.purple }/></AddRemoveButton>
             </AmountGroup>
             <Button>
