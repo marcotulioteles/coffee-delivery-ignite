@@ -2,7 +2,8 @@ import { Coffee } from "./reducer";
 
 export enum ActionsType {
   ADD_COFFEE_T0_CART = 'ADD_COFFEE_T0_CART',
-  UPDATE_QUANTITY = 'UPDATE_QUANTITY'
+  REMOVE_COFFEE_FROM_CART = 'REMOVE_COFFEE_FROM_CART',
+  UPDATE_COFFEE_QUANTITY = 'UPDATE_COFFEE_QUANTITY'
 }
 
 export function addCoffeeToCartAction(newCoffee: Coffee) {
@@ -14,8 +15,21 @@ export function addCoffeeToCartAction(newCoffee: Coffee) {
   }
 }
 
-export function updateQuantityAction() {
+export function removeCoffeeAction(coffeeId: string) {
   return {
-    type: ActionsType.UPDATE_QUANTITY,
+    type: ActionsType.REMOVE_COFFEE_FROM_CART,
+    payload: {
+      coffeeId
+    }
+  }
+}
+
+export function updateCoffeeQuantityAction(coffeeId: string, quantity: number) {
+  return {
+    type: ActionsType.UPDATE_COFFEE_QUANTITY,
+    payload: {
+      coffeeId,
+      quantity
+    }
   }
 }

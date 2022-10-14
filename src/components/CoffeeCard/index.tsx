@@ -33,7 +33,7 @@ interface CoffeeCardProps {
 
 export function CoffeeCard({ newCoffee ,imageUrl, badges, title, description, price }: CoffeeCardProps) {
   const [quantity, setQuantity] = useState(1);
-  const { addNewCoffeeToCart, updateQuantity } = useContext(CartContext);
+  const { addNewCoffeeToCart } = useContext(CartContext);
 
   const addQuantity = () => {
     setQuantity(state => state + 1);
@@ -45,9 +45,7 @@ export function CoffeeCard({ newCoffee ,imageUrl, badges, title, description, pr
   }
 
   const handleAddCoffeeToCart = () => {
-    console.log('called handle add coffee function!')
     addNewCoffeeToCart({ ...newCoffee, quantity });
-    updateQuantity();
   }
 
   return (

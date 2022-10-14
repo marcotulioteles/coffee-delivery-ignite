@@ -17,10 +17,6 @@ import { CartContext } from '../../contexts/CartContext';
 export function Header() {
   const { cart } = useContext(CartContext);
 
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
-
   return (
     <HeaderContainer>
       <HeaderContent>
