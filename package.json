@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.0",
     "axios": "^1.1.2",
     "immer": "^9.0.15",
     "phosphor-react": "^1.4.1",
