@@ -1,43 +1,58 @@
-import { ReactNode, useEffect, useRef } from "react";
-import { ModalBackground, ModalContainer } from "./styles";
-import { createPortal } from 'react-dom';
-import { X } from "phosphor-react";
+import { ReactNode, useEffect, useRef, MouseEvent } from 'react';
+import { ButtonGroup } from '../../pages/Checkout/styles';
+import { ModalContainer } from './styles';
+// import { createPortal } from 'react-dom';
 
 interface ModalProps {
-  isOpen: boolean;
-  closeFn: () => void;
+  title?: string;
+  isOpened: boolean;
+  onProceed?: () => void;
+  onClose: () => void;
   children: ReactNode;
+  closeButtonText?: string;
+  proceedButtonText?: string;
+  showProceedButton?: boolean;
 }
+export function Modal({
+  children,
+  isOpened,
+  onClose,
+  onProceed,
+  title,
+  closeButtonText,
+  proceedButtonText,
+  showProceedButton = true
+}: ModalProps) {
 
-const modalRoot = document.getElementById('modal-root') as HTMLElement;
+  const ref: any = useRef(null);
 
-export function Modal({ closeFn, isOpen = false, children }: ModalProps) {
-  const modalContainerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (isOpened) {
+      ref.current?.showModal();
+      document.body.classList.add('modal-open');
+    } else {
+      ref.current?.close();
+      document.body.classList.remove('modal-open');
+    }
+  }, [isOpened]);
 
-  // useEffect(() => {
-  //   console.log(isOpen)
-  //   if (!isOpen) return;
+  const proceedAndClose = () => {
+    if (onProceed) onProceed()
+    onClose();
+  };
 
-  //   function listener(event: any) {
-  //     if ((modalContainerRef.current as HTMLDivElement).contains(event.target)) {
-  //       return;
-  //     }
-  //     closeFn()
-  //   }
+  const preventAutoClose = (event: MouseEvent) => event.stopPropagation;
 
-  //   window.addEventListener('click', listener)
-
-  //   return () => window.removeEventListener('click', listener);
-  // }, [isOpen])
-
-  if (!isOpen) return null;
-
-  return createPortal(
-    <ModalBackground>
-      <ModalContainer ref={modalContainerRef}>
-        <X size={24} style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer' }} onClick={closeFn} />
+  return (
+    <ModalContainer ref={ref} onCancel={onClose} onClick={onClose}>
+      <div onClick={preventAutoClose}>
+        <h3>{title}</h3>
         {children}
-      </ModalContainer>
-    </ModalBackground>,
-    modalRoot)
+        <ButtonGroup>
+          {showProceedButton && <button onClick={proceedAndClose}>{proceedButtonText ?? 'Proceed'}</button>}
+          <button onClick={onClose}>{closeButtonText ?? 'Cancel'}</button>
+        </ButtonGroup>
+      </div>
+    </ModalContainer>
+  )
 }

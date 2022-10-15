@@ -169,7 +169,7 @@ export function Checkout() {
           </SelectedCoffeeContainer>
         </SelectedCoffeeWrapper>
       </CheckoutContainer>
-      <Modal isOpen={modalIsOpen} closeFn={() => setModalIsOpen(false)}>
+      <Modal isOpened={modalIsOpen} onClose={() => setModalIsOpen(false)} >
         {modalChildren}
       </Modal>
     </>

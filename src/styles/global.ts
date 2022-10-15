@@ -21,6 +21,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${ props => props.theme['base-background'] };
   }
 
+  body.modal-open {
+    overflow: hidden;
+  }
+
   body, input, textarea, button {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
