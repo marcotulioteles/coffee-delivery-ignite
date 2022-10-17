@@ -13,6 +13,7 @@ import styled from 'styled-components';
 // `;
 
 export const ModalContainer = styled.dialog`
+  margin: auto auto;
   min-width: 100px;
   min-height: 100px;
   display: flex;
@@ -21,6 +22,8 @@ export const ModalContainer = styled.dialog`
   background-color: ${ props => props.theme['base-background'] };
   padding: 40px;
   border-radius: 10px;
+  border: none;
+  text-align: center;
 
   ::backdrop {
     background: rgba(0, 0, 0, 0.3);
@@ -32,4 +35,5 @@ export const ButtonGroup = styled.div`
   align-items: center;
   justify-content: center;
   gap: 16px;
+  margin-top: 32px;
 `;

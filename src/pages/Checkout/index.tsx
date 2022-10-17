@@ -49,11 +49,6 @@ export function Checkout() {
     console.log(data)
   };
 
-  useEffect(() => {
-    console.log(modalIsOpen);
-    console.log(isValid);
-  }, [modalIsOpen])
-
   const onClickSubmitButton = () => {
     setModalChildren(<h1>Testando modal com novo conteúdo!</h1>);
     setModalIsOpen(true);

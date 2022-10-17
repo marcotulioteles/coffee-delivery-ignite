@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useRef, MouseEvent } from 'react';
-import { ButtonGroup } from '../../pages/Checkout/styles';
-import { ModalContainer } from './styles';
-// import { createPortal } from 'react-dom';
+import { createPortal } from 'react-dom';
+import { ButtonGroup, ModalContainer } from './styles';
 
 interface ModalProps {
   title?: string;
@@ -21,17 +20,20 @@ export function Modal({
   title,
   closeButtonText,
   proceedButtonText,
-  showProceedButton = true
+  showProceedButton = false
 }: ModalProps) {
 
   const ref: any = useRef(null);
+  const modalRoot = document.getElementById('modal-root') as HTMLElement;
 
   useEffect(() => {
+    const modalElementRef = ref.current;
+
     if (isOpened) {
-      ref.current?.showModal();
+      modalElementRef.showModal();
       document.body.classList.add('modal-open');
     } else {
-      ref.current?.close();
+      modalElementRef.close();
       document.body.classList.remove('modal-open');
     }
   }, [isOpened]);
@@ -44,7 +46,7 @@ export function Modal({
   const preventAutoClose = (event: MouseEvent) => event.stopPropagation;
 
   return (
-    <ModalContainer ref={ref} onCancel={onClose} onClick={onClose}>
+    <ModalContainer ref={ref} onCancel={onClose} onClick={onClose} style={{ display: isOpened ? 'flex' : 'none' }}>
       <div onClick={preventAutoClose}>
         <h3>{title}</h3>
         {children}
