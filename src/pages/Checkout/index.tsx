@@ -140,28 +140,30 @@ export function Checkout() {
 
         <SelectedCoffeeWrapper>
           <h1>Cafés selecionados</h1>
-          <SelectedCoffeeContainer>
-            <CoffeeCartItemsContainer>
-              {cart?.map((coffee) => (
-                <CoffeeCartItem
-                  key={`${coffee.id}`}
-                  coffee={coffee}
-                />
-              ))}
-            </CoffeeCartItemsContainer>
-            <TotalContainer>
-              <TotalTextGroup>
-                <SubtotalText>Total de itens</SubtotalText><SubtotalText>R$ {addZeroAtTheEnd(totalItems)}</SubtotalText>
-              </TotalTextGroup>
-              <TotalTextGroup>
-                <SubtotalText>Entrega</SubtotalText><SubtotalText>R$ 3,50</SubtotalText>
-              </TotalTextGroup>
-              <TotalTextGroup>
-                <TotalText>Total</TotalText><TotalText>R$ {addZeroAtTheEnd(totalItems + 3.5)}</TotalText>
-              </TotalTextGroup>
-            </TotalContainer>
-            <ConfirmButton type="submit" form="address-form" onClick={onClickSubmitButton}>CONFIRMAR PEDIDO</ConfirmButton>
-          </SelectedCoffeeContainer>
+          {cart.length > 0 &&
+            <SelectedCoffeeContainer>
+              <CoffeeCartItemsContainer>
+                {cart?.map((coffee) => (
+                  <CoffeeCartItem
+                    key={`${coffee.id}`}
+                    coffee={coffee}
+                  />
+                ))}
+              </CoffeeCartItemsContainer>
+              <TotalContainer>
+                <TotalTextGroup>
+                  <SubtotalText>Total de itens</SubtotalText><SubtotalText>R$ {addZeroAtTheEnd(totalItems)}</SubtotalText>
+                </TotalTextGroup>
+                <TotalTextGroup>
+                  <SubtotalText>Entrega</SubtotalText><SubtotalText>R$ 3,50</SubtotalText>
+                </TotalTextGroup>
+                <TotalTextGroup>
+                  <TotalText>Total</TotalText><TotalText>R$ {addZeroAtTheEnd(totalItems + 3.5)}</TotalText>
+                </TotalTextGroup>
+              </TotalContainer>
+              <ConfirmButton type="submit" form="address-form" onClick={onClickSubmitButton}>CONFIRMAR PEDIDO</ConfirmButton>
+            </SelectedCoffeeContainer>
+          }
         </SelectedCoffeeWrapper>
       </CheckoutContainer>
       <Modal isOpened={modalIsOpen} onClose={() => setModalIsOpen(false)} >

@@ -39,7 +39,9 @@ export function Modal({
   }, [isOpened]);
 
   const proceedAndClose = () => {
-    if (onProceed) onProceed()
+    if (onProceed) {
+      onProceed()
+    }
     onClose();
   };
 
@@ -51,8 +53,8 @@ export function Modal({
         <h3>{title}</h3>
         {children}
         <ButtonGroup>
-          {showProceedButton && <button onClick={proceedAndClose}>{proceedButtonText ?? 'Proceed'}</button>}
           <button onClick={onClose}>{closeButtonText ?? 'Cancel'}</button>
+          {showProceedButton && <button onClick={proceedAndClose}>{proceedButtonText ?? 'Proceed'}</button>}
         </ButtonGroup>
       </div>
     </ModalContainer>

@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useReducer } from "react";
 import { addCoffeeToCartAction, removeCoffeeAction, updateCoffeeQuantityAction } from "../reducers/actions";
-import { Coffee ,CartReducer } from "../reducers/reducer";
+import { Coffee, CartReducer } from "../reducers/reducer";
 
 interface CartContextProviderProps {
   children: ReactNode
@@ -40,14 +40,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   }
 
   return (
-    <CartContext.Provider value={{ 
+    <CartContext.Provider value={{
       cart,
       totalItems,
       addNewCoffeeToCart,
       removeCoffeeFromCart,
       updateCoffeeQuantity
-     }}>
-      { children }
+    }}>
+      {children}
     </CartContext.Provider>
   )
 }
