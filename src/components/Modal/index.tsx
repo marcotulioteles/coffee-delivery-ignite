@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef, MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonGroup, ModalContainer } from './styles';
+import { ButtonGroup, CancelButton, ModalContainer, ProceedButton } from './styles';
 
 interface ModalProps {
   title?: string;
@@ -53,8 +53,8 @@ export function Modal({
         <h3>{title}</h3>
         {children}
         <ButtonGroup>
-          <button onClick={onClose}>{closeButtonText ?? 'Cancel'}</button>
-          {showProceedButton && <button onClick={proceedAndClose}>{proceedButtonText ?? 'Proceed'}</button>}
+          <CancelButton onClick={onClose}>{closeButtonText ?? 'Cancel'}</CancelButton>
+          {showProceedButton && <ProceedButton onClick={proceedAndClose}>{proceedButtonText ?? 'Proceed'}</ProceedButton>}
         </ButtonGroup>
       </div>
     </ModalContainer>

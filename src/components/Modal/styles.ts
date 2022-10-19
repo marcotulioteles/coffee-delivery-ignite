@@ -37,3 +37,35 @@ export const ButtonGroup = styled.div`
   gap: 16px;
   margin-top: 32px;
 `;
+
+export const CancelButton = styled.button`
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background-color: ${ props => props.theme['base-button'] };
+  color: ${ props => props.theme['base-text'] };
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${ props => props.theme['base-button-hover'] }
+  }
+`;
+
+export const ProceedButton = styled.button`
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background-color: ${ props => props.theme['purple-light'] };
+  color: ${ props => props.theme['purple-dark'] };
+  padding: 12px;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${ props => props.theme['purple'] };
+    color: ${ props => props.theme['base-background'] }
+  }
+`;

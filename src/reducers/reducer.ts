@@ -41,8 +41,12 @@ export function CartReducer(state: CartState, action: any) {
     case ActionsType.REMOVE_COFFEE_FROM_CART:
       return produce(state, draft => {
         const coffeeToRemoveIndex = state.cart.findIndex(coffee => coffee.id === action.payload.coffeeId);
+
+        // console.log(coffeeToRemoveIndex > -1);
         
-        if (coffeeToRemoveIndex) draft.cart.splice(coffeeToRemoveIndex, 1);
+        if (coffeeToRemoveIndex > -1) draft.cart.splice(coffeeToRemoveIndex, 1);
+
+        // console.log(state.cart)
         
         draft.totalItems = calculateTotalItems(draft.cart);
       })

@@ -28,6 +28,7 @@ import { viaCepAPI } from "../../lib";
 import { CartContext } from "../../contexts/CartContext";
 import { Modal } from "../../components/Modal";
 import { ErrorMessage } from '@hookform/error-message';
+import { AddressRequiredMessage } from "../../components/ModalContents/AddressRequiredMessage";
 interface AddressFormInputs {
   cep: string;
   logradouro: string;
@@ -50,7 +51,7 @@ export function Checkout() {
   };
 
   const onClickSubmitButton = () => {
-    setModalChildren(<h1>Testando modal com novo conteúdo!</h1>);
+    setModalChildren(<AddressRequiredMessage />);
     setModalIsOpen(true);
   }
 
@@ -166,7 +167,7 @@ export function Checkout() {
           }
         </SelectedCoffeeWrapper>
       </CheckoutContainer>
-      <Modal isOpened={modalIsOpen} onClose={() => setModalIsOpen(false)} >
+      <Modal isOpened={modalIsOpen} onClose={() => setModalIsOpen(false)} closeButtonText="OK">
         {modalChildren}
       </Modal>
     </>
