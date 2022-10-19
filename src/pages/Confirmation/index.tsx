@@ -2,8 +2,13 @@ import deliveryGuy from '../../assets/delivery-guy.svg';
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { defaultTheme } from "../../styles/themes/default";
 import { ConfirmationContainer, ConfirmationContent, DetailsCircleIcon, PurchaseDetailsContainer, PurchaseDetailsText, PurchaseDetailsTextGroup, TitleWrapper } from "./styles";
+import { useContext, useEffect } from 'react';
+import { CartContext } from '../../contexts/CartContext';
+import { PaymentTypeEnumPTBR } from '../../shared/enums/payment-type.enum';
 
 export function Confirmation() {
+  const { address, paymentType } = useContext(CartContext);
+
   return (
     <ConfirmationContainer>
       <ConfirmationContent>
@@ -13,17 +18,17 @@ export function Confirmation() {
         </TitleWrapper>
         <PurchaseDetailsContainer>
           <PurchaseDetailsTextGroup>
-            <DetailsCircleIcon backgroundColor={ defaultTheme.purple }>
-              <MapPin size={ 16 } color="#FFFFFF" weight="fill"/>
+            <DetailsCircleIcon backgroundColor={defaultTheme.purple}>
+              <MapPin size={16} color="#FFFFFF" weight="fill" />
             </DetailsCircleIcon>
             <PurchaseDetailsText>
-              <p>Entrega em <span>Rua João Daniel Martinelli, 102</span></p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>Entrega em <span>Rua {address.logradouro}, {address.numero} {address.complemento ?? null}</span></p>
+              <p>{address.bairro} - {address.localidade}, {address.uf}</p>
             </PurchaseDetailsText>
           </PurchaseDetailsTextGroup>
           <PurchaseDetailsTextGroup>
-            <DetailsCircleIcon backgroundColor={ defaultTheme.yellow }>
-              <Timer size={ 16 } color="#FFFFFF" weight="fill"/>
+            <DetailsCircleIcon backgroundColor={defaultTheme.yellow}>
+              <Timer size={16} color="#FFFFFF" weight="fill" />
             </DetailsCircleIcon>
             <PurchaseDetailsText>
               <p>Previsão de entrega</p>
@@ -31,17 +36,17 @@ export function Confirmation() {
             </PurchaseDetailsText>
           </PurchaseDetailsTextGroup>
           <PurchaseDetailsTextGroup>
-            <DetailsCircleIcon backgroundColor={ defaultTheme["yellow-dark"] }>
-              <CurrencyDollar size={ 16 } color="#FFFFFF" weight="fill"/>
+            <DetailsCircleIcon backgroundColor={defaultTheme["yellow-dark"]}>
+              <CurrencyDollar size={16} color="#FFFFFF" weight="fill" />
             </DetailsCircleIcon>
             <PurchaseDetailsText>
               <p>Pagamento na entrega</p>
-              <span>Cartão de Crédito</span>
+              <span>{PaymentTypeEnumPTBR[paymentType]}</span>
             </PurchaseDetailsText>
           </PurchaseDetailsTextGroup>
         </PurchaseDetailsContainer>
       </ConfirmationContent>
-      <img src={ deliveryGuy }/>
+      <img src={deliveryGuy} />
     </ConfirmationContainer>
   )
 }

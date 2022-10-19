@@ -19,6 +19,7 @@ import {
   TotalTextGroup
 } from "./styles";
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react';
 import { defaultTheme } from "../../styles/themes/default";
 import { CoffeeCartItem } from "../../components/CoffeeCartItem";
@@ -27,32 +28,38 @@ import { addZeroAtTheEnd, CEPMask, removeNonDigitsChar } from "../../utils";
 import { viaCepAPI } from "../../lib";
 import { CartContext } from "../../contexts/CartContext";
 import { Modal } from "../../components/Modal";
-import { ErrorMessage } from '@hookform/error-message';
 import { AddressRequiredMessage } from "../../components/ModalContents/AddressRequiredMessage";
-interface AddressFormInputs {
-  cep: string;
-  logradouro: string;
-  numero: string;
-  complemento: string;
-  bairro: string;
-  localidade: string;
-  uf: string;
-}
+import { AddressFormInputs } from "../../shared/models/address-form-inputs";
+import { PaymentTypeEnum } from "../../shared/enums/payment-type.enum";
+import { PaymentTypeMessage } from "../../components/ModalContents/PaymentTypeMessage";
 
 export function Checkout() {
-  const [apiAddress, setApiAddress] = useState();
+  const { cart, totalItems, setAddress, setPaymentType, paymentType, emptyCart } = useContext(CartContext);
   const { register, handleSubmit, formState: { isValid, errors, isSubmitted }, setValue } = useForm<AddressFormInputs>({ mode: "all" });
-  const { cart, totalItems } = useContext(CartContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalChildren, setModalChildren] = useState<ReactNode>(null);
+  const { cash, credit, debit, none } = PaymentTypeEnum;
+  const navigate = useNavigate();
 
   const onSubmitAddress: SubmitHandler<AddressFormInputs> = data => {
-    console.log(data)
+    setAddress(data);
+    if (isValid && !paymentType.includes(none)) {
+      navigate('/confirmation');
+      emptyCart();
+    }
   };
 
   const onClickSubmitButton = () => {
-    setModalChildren(<AddressRequiredMessage />);
-    setModalIsOpen(true);
+    if (!isValid) {
+      setModalChildren(<AddressRequiredMessage />);
+      setModalIsOpen(true);
+      return
+    }
+
+    if (paymentType.includes('none')) {
+      setModalChildren(<PaymentTypeMessage />)
+      setModalIsOpen(true);
+    }
   }
 
   async function getAddressData(cepValue: string) {
@@ -123,15 +130,15 @@ export function Checkout() {
               </TitleWrapper>
             </FormTextTitleContainer>
             <ButtonGroup>
-              <PaymentTypeButton>
+              <PaymentTypeButton onClick={() => setPaymentType('credit_card')} highlight={paymentType.includes(credit)}>
                 <CreditCard size={16} color={defaultTheme.purple} />
                 Cartão de Crédito
               </PaymentTypeButton>
-              <PaymentTypeButton>
+              <PaymentTypeButton onClick={() => setPaymentType('debit_card')} highlight={paymentType.includes(debit)}>
                 <Bank size={16} color={defaultTheme.purple} />
                 Cartão de Débito
               </PaymentTypeButton>
-              <PaymentTypeButton>
+              <PaymentTypeButton onClick={() => setPaymentType('cash')} highlight={paymentType.includes(cash)}>
                 <Money size={16} color={defaultTheme.purple} />
                 Dinheiro
               </PaymentTypeButton>

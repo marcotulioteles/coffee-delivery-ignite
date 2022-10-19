@@ -4,6 +4,10 @@ interface InputProps {
   customWidth?: string;
 }
 
+interface PaymentButtonProps {
+  highlight?: boolean;
+}
+
 export const CheckoutContainer = styled.main`
   width: 1180px;
   display: flex;
@@ -104,16 +108,16 @@ export const ButtonGroup = styled.div`
   gap: 12px;
 `;
 
-export const PaymentTypeButton = styled.button`
+export const PaymentTypeButton = styled.button<PaymentButtonProps>`
   min-width: 174px;
-  border: none;
+  border: ${ props => props.highlight ? '1px solid' + props.theme['purple'] : 'none' };
   outline: none;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
   min-height: 51px;
-  background-color: ${ props => props.theme['base-button'] };
+  background-color: ${ props => props.highlight ? props.theme['purple-light'] : props.theme['base-button'] };
   border-radius: 6px;
   text-transform: uppercase;
   font-size: 12px;

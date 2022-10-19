@@ -1,6 +1,8 @@
 import { current, produce } from 'immer';
+import { AddressFormInputs } from '../shared/models/address-form-inputs';
 import { ActionsType } from './actions';
 
+export type PaymentType = 'credit_card' | 'debit_card' | 'cash' | 'none';
 export interface Coffee {
   id: string,
   imageUrl: string,
@@ -13,7 +15,9 @@ export interface Coffee {
 
 interface CartState {
   cart: Coffee[],
-  totalItems: number
+  totalItems: number,
+  address: AddressFormInputs,
+  paymentType: PaymentType
 }
 
 const calculateTotalItems = (cart: Coffee[]): number => {
@@ -41,13 +45,7 @@ export function CartReducer(state: CartState, action: any) {
     case ActionsType.REMOVE_COFFEE_FROM_CART:
       return produce(state, draft => {
         const coffeeToRemoveIndex = state.cart.findIndex(coffee => coffee.id === action.payload.coffeeId);
-
-        // console.log(coffeeToRemoveIndex > -1);
-        
         if (coffeeToRemoveIndex > -1) draft.cart.splice(coffeeToRemoveIndex, 1);
-
-        // console.log(state.cart)
-        
         draft.totalItems = calculateTotalItems(draft.cart);
       })
     case ActionsType.UPDATE_COFFEE_QUANTITY:
@@ -60,6 +58,18 @@ export function CartReducer(state: CartState, action: any) {
         }
 
         draft.totalItems = calculateTotalItems(draft.cart);
+      })
+    case ActionsType.SET_ADDRESS:
+      return produce(state, draft => {
+        draft.address = action.payload
+      })
+    case ActionsType.SET_PAYMENT_TYPE:
+      return produce(state, draft => {
+        draft.paymentType = action.payload
+      })
+    case ActionsType.EMPTY_CART:
+      return produce(state, draft => {
+        draft.cart = [];
       })
     default: 
       return state
