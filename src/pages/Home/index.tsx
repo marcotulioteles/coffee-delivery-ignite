@@ -1,6 +1,6 @@
 import { CoffeeCard } from "../../components/CoffeeCard";
 import { coffeeOptions } from "../../shared/constants/coffee-options";
-import { 
+import {
   CoffeeCupImageContainer,
   ContentPage,
   OurCoffeesContainer,
@@ -13,8 +13,8 @@ import {
   PresentationText,
   PresentationTextDetailsContainer,
   PresentationTextTitle,
-  PresentationTitleWrapper, 
-  PresentationWrapper 
+  PresentationTitleWrapper,
+  PresentationWrapper
 } from "./styles";
 import { textDetails } from "./text-details";
 
@@ -34,22 +34,22 @@ export function Home() {
             </PresentationTitleWrapper>
             <PresentationTextDetailsContainer>
 
-              { textDetails.map(detail => (
-                <PresentationDetailItemContainer key={ detail.text.trim() }>
-                  <PresentationDetailBoxCircle backgroundColor={ detail.color}>
-                    { detail.icon }
+              {textDetails.map(detail => (
+                <PresentationDetailItemContainer key={detail.text.trim()}>
+                  <PresentationDetailBoxCircle backgroundColor={detail.color}>
+                    {detail.icon}
                   </PresentationDetailBoxCircle>
-                    <PresentationDetailBoxText>
-                      { detail.text }
-                    </PresentationDetailBoxText>
+                  <PresentationDetailBoxText>
+                    {detail.text}
+                  </PresentationDetailBoxText>
                 </PresentationDetailItemContainer>
-              )) }
+              ))}
 
             </PresentationTextDetailsContainer>
           </PresentationText>
 
           <CoffeeCupImageContainer>
-            <img src="src/assets/coffee-cup.png" height={ 360 }/>
+            <img src="src/assets/coffee-cup.png" />
           </CoffeeCupImageContainer>
         </PresentationContainer>
       </PresentationWrapper>
@@ -57,17 +57,17 @@ export function Home() {
       <OurCoffeesContainer>
         <h2>Nossos cafés</h2>
         <OurCoffeesGrid>
-          { coffeeOptions.map(coffee => (
-            <CoffeeCard 
-              key={ coffee.id } 
-              imageUrl={ coffee.imageUrl } 
-              badges={ coffee.badges }
-              description={ coffee.description }
-              price={ coffee.price }
-              title={ coffee.title }
-              newCoffee={ coffee }
+          {coffeeOptions.map(coffee => (
+            <CoffeeCard
+              key={coffee.id}
+              imageUrl={coffee.imageUrl}
+              badges={coffee.badges}
+              description={coffee.description}
+              price={coffee.price}
+              title={coffee.title}
+              newCoffee={coffee}
             />
-          )) }
+          ))}
         </OurCoffeesGrid>
       </OurCoffeesContainer>
     </ContentPage>

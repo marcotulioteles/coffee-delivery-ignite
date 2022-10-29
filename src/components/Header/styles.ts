@@ -8,14 +8,19 @@ export const HeaderContainer = styled.header`
   justify-content: center;
   position: fixed;
   top: 0;
-  background-color: ${ props => props.theme["base-background"] }
+  background-color: ${ props => props.theme["base-background"] };
 `;
 
 export const HeaderContent = styled.nav`
-  width: 1180px;
+  width: 100%;
+  max-width: 1180px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 1220px) {
+    margin: 0 1.5rem;
+  }
 `;
 
 export const RightNavButtons = styled.div`

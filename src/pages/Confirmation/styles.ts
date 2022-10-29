@@ -8,7 +8,8 @@ export const ConfirmationContainer = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  width: 1180px;
+  width: 100%;
+  max-width: 1180px;
   margin: 184px auto 0;
 `;
 

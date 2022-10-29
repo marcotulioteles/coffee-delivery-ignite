@@ -19,13 +19,25 @@ export const PresentationWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 32px;
-`;
+  `;
 
 export const PresentationContainer = styled.div`
   margin: 0 auto;
-  width: 1180px;
+  width: 100%;
+  max-width: 1180px;
   height: 544px;
   display: flex;
+  
+  @media (max-width: 1220px) {
+    margin: 0 1.5rem;
+  }
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+    gap: 2rem;
+  }
 `;
 
 export const PresentationText = styled.div`
@@ -34,12 +46,23 @@ export const PresentationText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  @media (max-width: 1000px) {
+    align-items: center;
+    width: auto;
+    gap: 3rem;
+  }
   `;
 
 export const PresentationTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media (max-width: 1000px) {
+    align-items: center;
+    gap: 3rem;
+  }
 `;
 
 export const PresentationTextTitle = styled.h1`
@@ -49,6 +72,11 @@ export const PresentationTextTitle = styled.h1`
   color: ${ props => props.theme["base-title"] };
   text-align: left;
   line-height: 1.3;
+
+  @media (max-width: 1000px) {
+    text-align: center;
+    margin-top: 2rem;
+  }
 `;
 
 export const PresentationSubtitle = styled.p`
@@ -58,6 +86,10 @@ export const PresentationSubtitle = styled.p`
   color: ${ props => props.theme["base-text"] };
   text-align: left;
   line-height: 1.3;
+
+  @media (max-width: 1000px) {
+    text-align: center;
+  }
 `;
 
 export const PresentationTextDetailsContainer = styled.div`
@@ -65,6 +97,11 @@ export const PresentationTextDetailsContainer = styled.div`
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
   gap: 20px;
+
+  @media (max-width: 620px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const PresentationDetailItemContainer = styled.div`
@@ -94,10 +131,21 @@ export const CoffeeCupImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 520px) {
+    width: 100%;
+    margin: 1.5rem;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 `;
 
 export const OurCoffeesContainer = styled.div`
-  width: 1180px;
+  width: 100%;
+  max-width: 1180px;
   margin: 0 auto 160px;
   display: flex;
   flex-direction: column;
@@ -106,6 +154,14 @@ export const OurCoffeesContainer = styled.div`
     font-size: 32px;
     margin-bottom: 54px;
     line-height: 1.3;
+
+    @media (max-width: 1220px) {
+      margin: 0 1.5rem 54px;
+    }
+
+    @media (max-width: 1000px) {
+      text-align: center;
+    }
   }
 `;
 
@@ -115,4 +171,18 @@ export const OurCoffeesGrid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   row-gap: 40px;
   column-gap: 32px;
+
+  @media (max-width: 1220px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 625px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;

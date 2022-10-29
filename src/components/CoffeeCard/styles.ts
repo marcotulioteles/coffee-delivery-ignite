@@ -8,11 +8,7 @@ export const CoffeeCardContainer = styled.div`
   background-color: ${ props => props.theme["base-card"] };
   padding: 0 24px 20px;
   border-radius: 6px 36px 6px 36px;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    transform: translateY(-12px) scale(1.025);
-  }
+  justify-self: center;
 `;
 
 export const CoffeeImage = styled.img`

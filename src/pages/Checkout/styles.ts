@@ -9,7 +9,8 @@ interface PaymentButtonProps {
 }
 
 export const CheckoutContainer = styled.main`
-  width: 1180px;
+  width: 100%;
+  max-width: 1180px;
   display: flex;
   align-items: flex-start;
   gap: 32px;
