@@ -15,12 +15,21 @@ export const CheckoutContainer = styled.main`
   align-items: flex-start;
   gap: 32px;
   margin: 144px auto 54px;
+
+  @media (max-width: 1220px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const AddressFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 57.5%;
+
+  @media (max-width: 1220px) {
+    width: 65%;
+  }
 
   &>h1 {
     font-size: 18px;
@@ -136,6 +145,10 @@ export const SelectedCoffeeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  @media (max-width: 1220px) {
+    width: 65%;
+  }
 
   &>h1 {
     font-size: 18px;
