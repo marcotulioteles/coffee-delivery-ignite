@@ -1,7 +1,22 @@
+import traditionalCoffeeImg from '../../assets/expresso-tradicional.png'
+import americanoCoffeeImg from '../../assets/expresso-americano.png'
+import cremosoCoffeeImg from '../../assets/expresso-cremoso.png'
+import geladoCoffeeImg from '../../assets/expresso-gelado.png'
+import comLeiteCoffeeImg from '../../assets/cafe-com-leite.png'
+import latteCoffeeImg from '../../assets/latte.png'
+import capuccinoCoffeeImg from '../../assets/capuccino.png'
+import macchiatoCoffeeImg from '../../assets/macchiato.png'
+import mocaccinoCoffeeImg from '../../assets/mocaccino.png'
+import chocolateQuenteCoffeeImg from '../../assets/chocolate-quente.png'
+import cubanoCoffeeImg from '../../assets/cubano.png'
+import havaianoCoffeeImg from '../../assets/havaiano.png'
+import arabeCoffeeImg from '../../assets/arabe.png'
+import irlandesCoffeeImg from '../../assets/irlandes.png'
+
 export const coffeeOptions = [
   {
     id: 'coffee01',
-    imageUrl: 'src/assets/expresso-tradicional.png',
+    imageUrl: traditionalCoffeeImg,
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     price: 9.90,
@@ -10,7 +25,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee02',
-    imageUrl: 'src/assets/expresso-americano.png',
+    imageUrl: americanoCoffeeImg,
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     price: 9.90,
@@ -19,7 +34,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee03',
-    imageUrl: 'src/assets/expresso-cremoso.png',
+    imageUrl: cremosoCoffeeImg,
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     price: 9.90,
@@ -28,7 +43,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee04',
-    imageUrl: 'src/assets/expresso-gelado.png',
+    imageUrl: geladoCoffeeImg,
     title: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     price: 9.90,
@@ -37,7 +52,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee05',
-    imageUrl: 'src/assets/cafe-com-leite.png',
+    imageUrl: comLeiteCoffeeImg,
     title: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     price: 9.90,
@@ -46,7 +61,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee06',
-    imageUrl: 'src/assets/latte.png',
+    imageUrl: latteCoffeeImg,
     title: 'Latte',
     description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
     price: 9.90,
@@ -55,7 +70,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee07',
-    imageUrl: 'src/assets/capuccino.png',
+    imageUrl: capuccinoCoffeeImg,
     title: 'Capuccino',
     description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
     price: 9.90,
@@ -64,7 +79,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee08',
-    imageUrl: 'src/assets/macchiato.png',
+    imageUrl: macchiatoCoffeeImg,
     title: 'Macchiato',
     description: 'Café expresso misturado com um pouco de leite quente e espuma',
     price: 9.90,
@@ -73,7 +88,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee09',
-    imageUrl: 'src/assets/mocaccino.png',
+    imageUrl: mocaccinoCoffeeImg,
     title: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
     price: 9.90,
@@ -82,7 +97,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee10',
-    imageUrl: 'src/assets/chocolate-quente.png',
+    imageUrl: chocolateQuenteCoffeeImg,
     title: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     price: 9.90,
@@ -91,7 +106,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee11',
-    imageUrl: 'src/assets/cubano.png',
+    imageUrl: cubanoCoffeeImg,
     title: 'Cubano',
     description: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
     price: 9.90,
@@ -100,7 +115,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee12',
-    imageUrl: 'src/assets/havaiano.png',
+    imageUrl: havaianoCoffeeImg,
     title: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
     price: 9.90,
@@ -109,7 +124,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee13',
-    imageUrl: 'src/assets/arabe.png',
+    imageUrl: arabeCoffeeImg,
     title: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     price: 9.90,
@@ -118,7 +133,7 @@ export const coffeeOptions = [
   },
   {
     id: 'coffee14',
-    imageUrl: 'src/assets/irlandes.png',
+    imageUrl: irlandesCoffeeImg,
     title: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     price: 9.90,

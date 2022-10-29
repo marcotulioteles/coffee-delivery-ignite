@@ -17,6 +17,7 @@ import {
   PresentationWrapper
 } from "./styles";
 import { textDetails } from "./text-details";
+import coffeeCupImg from '../../assets/coffee-cup.png'
 
 export function Home() {
   return (
@@ -49,7 +50,7 @@ export function Home() {
           </PresentationText>
 
           <CoffeeCupImageContainer>
-            <img src="src/assets/coffee-cup.png" />
+            <img src={coffeeCupImg} />
           </CoffeeCupImageContainer>
         </PresentationContainer>
       </PresentationWrapper>
