@@ -30,6 +30,8 @@ export const RightNavButtons = styled.div`
 `;
 
 export const City = styled.div`
+  border: none;
+  outline: none;
   width: fit-content;
   height: 38px;
   padding: 0.5rem;
@@ -40,6 +42,13 @@ export const City = styled.div`
   border-radius: 8px;
   color: ${ props => props.theme["purple-dark"] };
   background-color: ${ props => props.theme["purple-light"] };
+  cursor: pointer;
+
+  @media (max-width: 375px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const Cart = styled.div`

@@ -7,6 +7,16 @@ export const SelectedCoffeeContainer = styled.div`
   gap: 40px;
   padding: 24px 0 32px;
   border-bottom: 1px solid ${ props => props.theme['base-button'] };
+
+  @media (max-width: 1220px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const SelectedCoffeeDetailsContainer = styled.div`
@@ -14,6 +24,11 @@ export const SelectedCoffeeDetailsContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const CoffeeImage = styled.img`
@@ -33,6 +48,10 @@ export const CoffeeDetailsActionsGroup = styled.div`
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
     line-height: 1.3;
+
+    @media (max-width: 425px) {
+      text-align: center;
+    }
   }
 `;
 

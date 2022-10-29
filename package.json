@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.0",
+    "@radix-ui/react-popover": "^1.0.2",
+    "@radix-ui/react-tooltip": "^1.0.2",
     "axios": "^1.1.2",
     "immer": "^9.0.15",
     "phosphor-react": "^1.4.1",

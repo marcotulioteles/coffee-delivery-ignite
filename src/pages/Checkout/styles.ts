@@ -30,6 +30,11 @@ export const AddressFormContainer = styled.div`
   @media (max-width: 1220px) {
     width: 65%;
   }
+  
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 0 1.5rem;
+  }
 
   &>h1 {
     font-size: 18px;
@@ -45,6 +50,10 @@ export const AddressForm = styled.form`
   margin-top: 16px;
   background-color: ${ props => props.theme['base-card'] };
   border-radius: 6px;
+
+  @media (max-width: 425px) {
+    padding: 40px 1.5rem;
+  }
 `;
 
 export const FormTextTitleContainer = styled.div`
@@ -78,6 +87,14 @@ export const InputGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    
+    input {
+      width: 100%;
+    }
+  }
 `;
 
 export const Input = styled.input<InputProps>`
@@ -110,12 +127,25 @@ export const PaymentTypeContainer = styled.div`
   background-color: ${ props => props.theme['base-card'] };
   margin-top: 12px;
   border-radius: 6px;
+
+  @media (max-width: 425px) {
+    padding: 40px 1.5rem;
+  }
 `;
 
 export const ButtonGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 `;
 
 export const PaymentTypeButton = styled.button<PaymentButtonProps>`
@@ -148,6 +178,11 @@ export const SelectedCoffeeWrapper = styled.div`
 
   @media (max-width: 1220px) {
     width: 65%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 0 1.5rem;
   }
 
   &>h1 {

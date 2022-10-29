@@ -32,7 +32,7 @@ export const PresentationContainer = styled.div`
     margin: 0 1.5rem;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
     height: auto;
     align-items: center;
@@ -47,7 +47,7 @@ export const PresentationText = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     align-items: center;
     width: auto;
     gap: 3rem;
@@ -59,7 +59,7 @@ export const PresentationTitleWrapper = styled.div`
   flex-direction: column;
   gap: 16px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     align-items: center;
     gap: 3rem;
   }
@@ -73,7 +73,7 @@ export const PresentationTextTitle = styled.h1`
   text-align: left;
   line-height: 1.3;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     text-align: center;
     margin-top: 2rem;
   }
@@ -87,7 +87,7 @@ export const PresentationSubtitle = styled.p`
   text-align: left;
   line-height: 1.3;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     text-align: center;
   }
 `;
@@ -98,14 +98,15 @@ export const PresentationTextDetailsContainer = styled.div`
   grid-template-rows: repeat(2, auto);
   gap: 20px;
 
-  @media (max-width: 620px) {
+  @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
   }
 `;
 
 export const PresentationDetailItemContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
   gap: 12px;
 `;
@@ -127,12 +128,13 @@ export const PresentationDetailBoxText = styled.p`
 `;
 
 export const CoffeeCupImageContainer = styled.div`
+  max-width: 476px;
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 520px) {
+  @media (max-width: 768px) {
     width: 100%;
     margin: 1.5rem;
 
@@ -159,7 +161,7 @@ export const OurCoffeesContainer = styled.div`
       margin: 0 1.5rem 54px;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1024px) {
       text-align: center;
     }
   }
@@ -176,11 +178,11 @@ export const OurCoffeesGrid = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
   
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 625px) {
+  @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;

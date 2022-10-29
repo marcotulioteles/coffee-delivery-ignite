@@ -11,6 +11,26 @@ export const ConfirmationContainer = styled.div`
   width: 100%;
   max-width: 1180px;
   margin: 184px auto 0;
+
+  @media (max-width: 1220px) {
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 54px;
+    gap: 2rem;
+  }
+
+  img {
+    max-width: 492px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      height: auto;
+    }
+  }
 `;
 
 export const ConfirmationContent = styled.div`
@@ -18,11 +38,20 @@ export const ConfirmationContent = styled.div`
   flex-direction: column;
   gap: 40px;
   width: 50%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 1024px) {
+    align-items: center;
+    text-align: center;
+  }
 
   h1 {
     font-family: 'Baloo 2', sans-serif;
@@ -50,10 +79,15 @@ export const PurchaseDetailsContainer = styled.div`
   linear-gradient(to right, ${ props => props.theme.yellow }, ${ props => props.theme.purple }) border-box;
   border-radius: 6px 36px 6px 36px;
   border: 1px solid transparent;
+
+  @media (max-width: 768px) {
+    padding: 40px 1.5rem;
+  }
 `;
 
 export const PurchaseDetailsTextGroup = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
   gap: 12px;
 `;
@@ -64,7 +98,7 @@ export const DetailsCircleIcon = styled.div<DetailsCircleIconProps>`
   align-items: center;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 16px;
   background-color: ${ props => props.backgroundColor };
 `;
 
