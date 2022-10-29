@@ -18,17 +18,12 @@ import { useWindowSize } from '../../hooks/useWindowSize';
 import { useGeolocation } from '../../hooks/useGeolocation';
 
 export function Header() {
-  const { cart } = useContext(CartContext);
+  const { cart, address } = useContext(CartContext);
   const { width: windowWidth } = useWindowSize();
-  const location = useGeolocation();
 
   useEffect(() => {
-    console.log('window width: ', windowWidth)
-  }, [windowWidth]);
-
-  useEffect(() => {
-    console.log('Location: ', location)
-  }, [location]);
+    console.log('address: ', address)
+  }, [address]);
 
   return (
     <HeaderContainer>
@@ -40,18 +35,18 @@ export function Header() {
           {windowWidth && windowWidth > 375 ? (
             <City>
               <MapPin color={defaultTheme['purple']} weight='fill' size={22} />
-              <span>Porto Alegre, RS</span>
+              {address?.localidade && <span>{address?.localidade} {address?.uf}</span>}
             </City>
           ) : (
             <PopoverPrimitive.Root>
               <PopoverPrimitive.Trigger style={{ border: 'none', background: 'transparent' }}>
                 <City>
                   <MapPin color={defaultTheme['purple']} weight='fill' size={22} />
-                  <span>Porto Alegre, RS</span>
+                  {address?.localidade && <span>{address?.localidade} {address?.uf}</span>}
                 </City>
               </PopoverPrimitive.Trigger>
               <PopoverContent sideOffset={5}>
-                <span>Porto Alegre, RS</span>
+                {address?.localidade && <span>{address?.localidade} {address?.uf}</span>}
               </PopoverContent>
             </PopoverPrimitive.Root>
           )}

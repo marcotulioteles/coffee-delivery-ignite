@@ -70,14 +70,32 @@ export function Checkout() {
     const response = await viaCepAPI.get(`/${cepValueOnlyDigits}/json`)
 
     const { data } = response;
+    console.log(data)
 
     if (data.erro) {
       return;
     }
 
     if (data) {
+      const {
+        cep,
+        logradouro,
+        complemento,
+        bairro,
+        localidade,
+        uf
+      } = data;
       inputKeys.forEach((key) => {
         setValue(key as keyof AddressFormInputs, response.data[key])
+      })
+      setAddress({
+        cep,
+        logradouro,
+        complemento,
+        bairro,
+        localidade,
+        uf,
+        numero: ''
       })
     }
   }
