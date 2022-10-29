@@ -21,10 +21,6 @@ export function Header() {
   const { cart, address } = useContext(CartContext);
   const { width: windowWidth } = useWindowSize();
 
-  useEffect(() => {
-    console.log('address: ', address)
-  }, [address]);
-
   return (
     <HeaderContainer>
       <HeaderContent>

@@ -23,7 +23,7 @@ import { useNavigate } from 'react-router-dom';
 import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react';
 import { defaultTheme } from "../../styles/themes/default";
 import { CoffeeCartItem } from "../../components/CoffeeCartItem";
-import { ChangeEvent, ReactNode, useContext, useEffect, useState } from "react";
+import { ChangeEvent, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import { addZeroAtTheEnd, CEPMask, removeNonDigitsChar } from "../../utils";
 import { viaCepAPI } from "../../lib";
 import { CartContext } from "../../contexts/CartContext";
@@ -34,8 +34,13 @@ import { PaymentTypeEnum } from "../../shared/enums/payment-type.enum";
 import { PaymentTypeMessage } from "../../components/ModalContents/PaymentTypeMessage";
 
 export function Checkout() {
-  const { cart, totalItems, setAddress, setPaymentType, paymentType, emptyCart } = useContext(CartContext);
-  const { register, handleSubmit, formState: { isValid, errors, isSubmitted }, setValue } = useForm<AddressFormInputs>({ mode: "all" });
+  const { cart, totalItems, setAddress, setPaymentType, paymentType, emptyCart, address } = useContext(CartContext);
+  const { register, handleSubmit, formState: { isValid }, setValue } = useForm<AddressFormInputs>({
+    defaultValues: useMemo(() => {
+      return address
+    }, [address]),
+    mode: "all"
+  });
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalChildren, setModalChildren] = useState<ReactNode>(null);
   const { cash, credit, debit, none } = PaymentTypeEnum;
@@ -70,7 +75,6 @@ export function Checkout() {
     const response = await viaCepAPI.get(`/${cepValueOnlyDigits}/json`)
 
     const { data } = response;
-    console.log(data)
 
     if (data.erro) {
       return;
