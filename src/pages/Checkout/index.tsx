@@ -48,14 +48,14 @@ export function Checkout() {
 
   const onSubmitAddress: SubmitHandler<AddressFormInputs> = data => {
     setAddress(data);
-    if (isValid && !paymentType.includes(none)) {
+    if (address.bairro && address.logradouro && address.numero && address.localidade && !paymentType.includes(none)) {
       navigate('/confirmation');
       emptyCart();
     }
   };
 
   const onClickSubmitButton = () => {
-    if (!isValid) {
+    if (!address.bairro && !address.logradouro && !address.numero && !address.localidade) {
       setModalChildren(<AddressRequiredMessage />);
       setModalIsOpen(true);
       return
